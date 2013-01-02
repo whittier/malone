@@ -1,4 +1,5 @@
 class EmailTemplatesController < ApplicationController
+
   # GET /email_templates
   # GET /email_templates.json
   def index
