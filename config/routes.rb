@@ -1,4 +1,7 @@
 Malone::Application.routes.draw do
+  resources :email_templates
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
