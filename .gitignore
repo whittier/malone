@@ -1,0 +1,10 @@
+/.bundle
+/log/*.log
+/tmp
+database.yml
+.DS_Store
+*swp
+.powrc
+coverage
+.rvmrc
+.ruby-version
