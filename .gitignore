@@ -8,3 +8,4 @@ database.yml
 coverage
 .rvmrc
 .ruby-version
+.idea
