@@ -1,0 +1,28 @@
+<h1>Send Email</h1>
+
+<%= form_for(@send_email) do |f| %>
+    <% if @send_email.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@send_email.errors.count, "error") %> prohibited this send_email from being submitted:</h2>
+
+          <ul>
+            <% @send_email.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <%= f.hidden_field :email_template_id %>
+    <p>
+      <%= f.label :filename %>
+      <%= f.text_field :filename %>
+    </p>
+
+    <div class="actions">
+      <%= f.submit("Send Emails") %>
+    </div>
+<% end %>
+
+<%= link_to 'Edit', edit_email_template_path(@email_template) %> |
+<%= link_to 'Back', email_templates_path %>
+

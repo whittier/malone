@@ -1,13 +1,20 @@
 class SendEmailController < ApplicationController
 
-  def send (param1, param2)
+  def prepare_to_send
     @email_template = EmailTemplate.find(params[:id])
-
-    puts ("Hello World")
-    puts(params[:id] + " is going to be sent  ")
-
+    @send_email = SendEmail.new
+    @send_email.email_template_id = @email_template.id
     respond_to do |format|
-      format.html # send.html.erb
+      format.html # prepare_to_send.html.erb
+      format.json { render json: @email_template }
+    end
+  end
+
+  def send_email
+    @email_template = EmailTemplate.find(params[:id])
+    @email_count = 1
+    respond_to do |format|
+      format.html # prepare_to_send.html.erb
       format.json { render json: @email_template }
     end
   end
