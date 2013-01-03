@@ -1,6 +1,6 @@
 Malone::Application.routes.draw do
   resources :email_templates
-
+  match "/send_email/:id" => "send_email#send", :as =>:send
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
