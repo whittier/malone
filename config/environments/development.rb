@@ -14,6 +14,7 @@ Malone::Application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send
+  config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
 
   # Print deprecation notices to the Rails logger
@@ -34,4 +35,17 @@ Malone::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # Loads after rails initializes, allows environment config to be limited to the initializers folder
+  config.after_initialize do
+    config.action_mailer.default_url_options = {
+        host: Rails.configuration.oc_malone_host
+    }
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+        address: Rails.configuration.oc_malone_address,
+        authentication: 'plain',
+        enable_starttls_auto: true
+    }
+  end
 end
