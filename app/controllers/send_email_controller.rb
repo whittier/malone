@@ -1,3 +1,5 @@
+require "mail"
+
 class SendEmailController < ApplicationController
 
   def prepare_to_send
@@ -11,7 +13,15 @@ class SendEmailController < ApplicationController
   end
 
   def send_email
-    @email_template = EmailTemplate.find(params[:id])
+    send_email = SendEmail.new(params[:send_email])
+
+    @email_template = EmailTemplate.find(send_email.email_template_id)
+
+    MaloneMailer.welcome_email(@email_template,
+                               {
+                                   to: ''
+                               }).deliver
+
     @email_count = 1
     respond_to do |format|
       format.html # prepare_to_send.html.erb
