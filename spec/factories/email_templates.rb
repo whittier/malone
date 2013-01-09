@@ -2,5 +2,8 @@
 
 FactoryGirl.define do
   factory :email_template do
+    name    "factory name"
+    subject "factory subject"
+    body    "factory body"
   end
 end

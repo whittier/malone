@@ -64,4 +64,18 @@ Malone::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+
+
+  # Loads after rails initializes, allows environment config to be limited to the initializers folder
+  config.after_initialize do
+    config.action_mailer.default_url_options = {
+        host: Rails.configuration.oc_malone_host
+    }
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+        address: Rails.configuration.oc_malone_address,
+        authentication: 'plain',
+        enable_starttls_auto: true
+    }
+  end
 end

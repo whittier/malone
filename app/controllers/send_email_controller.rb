@@ -17,10 +17,7 @@ class SendEmailController < ApplicationController
 
     @email_template = EmailTemplate.find(send_email.email_template_id)
 
-    MaloneMailer.welcome_email(@email_template,
-                               {
-                                   to: ''
-                               }).deliver
+    MaloneMailer.welcome_email(@email_template, { to: ''}).deliver
 
     @email_count = 1
     respond_to do |format|
