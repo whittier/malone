@@ -9,3 +9,4 @@ coverage
 .rvmrc
 .ruby-version
 .idea
+/malone_env.sh

@@ -1,7 +1,7 @@
 Malone::Application.routes.draw do
   resources :email_templates
-  match "/prepare_to_send_email/:id" => "send_email#prepare_to_send", :as =>:prepare_to_send
-  match "/send_email/:id" => "send_email#send_email", :as =>:send_emails
+  get  "/send_email/new/:id" => "send_email#prepare_to_send", :as =>:prepare_to_send
+  post "/send_email" => "send_email#send_email", :as =>:send_emails
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
