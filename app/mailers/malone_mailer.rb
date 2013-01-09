@@ -3,11 +3,11 @@ class MaloneMailer < ActionMailer::Base
 
 
 
-  def welcome_emails(email_template, data_list)
-    data_list.each do |data|
-      welcome_email(email_template, data)
-    end
-  end
+  #def welcome_emails(email_template, data_list)
+  #  data_list.each do |data|
+  #    welcome_email(email_template, data)
+  #  end
+  #end
 
   def welcome_email(email_template, data)
     admin_address = Rails.configuration.oc_malone_admin_address || ""
