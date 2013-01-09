@@ -37,17 +37,14 @@ describe SendEmailController do
       send_email = SendEmail.new valid_attributes
       send_email.email_template_id = email_template.id
 
-
       send_email_params = {
         email_template_id: send_email.email_template_id,
         filename: send_email.filename
       }
-
-      #post :send_email,   send_email.to_param  , valid_session
       post :send_email,   {send_email: send_email_params}  , valid_session
 
       MaloneMailer.any_instance.received_message? :welcome_email
-      #assigns(:send_email).email_template_id.should eq(email_template.id)
+
     end
   end
 

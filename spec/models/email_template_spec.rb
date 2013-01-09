@@ -18,6 +18,5 @@ describe EmailTemplate do
       FactoryGirl.build(:email_template, body: nil).should_not be_valid
     end
 
-
   end
 end
