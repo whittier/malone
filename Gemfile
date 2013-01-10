@@ -8,6 +8,7 @@ gem 'twitter-bootstrap-rails', '2.1.4'
 gem 'simple_form',             '2.0.4'
 gem 'quiet_assets',            '1.0.1'
 gem 'turbolinks',              '0.5.1'
+gem 'bcrypt-ruby'
 gem 'jquery-rails',            '2.1.4'
 gem 'awesome_print',           '1.1.0'
 gem 'dalli',                   '2.6.0'
@@ -20,11 +21,9 @@ group :assets do
   gem 'yui-compressor',        '0.9.6'
 end
 
-group :development do
-  gem 'debugger'
-end
 group :development, :test do
   gem 'rspec-rails',           '2.12.0'
+  gem 'debugger'
   gem 'factory_girl_rails',    '4.1.0'
   gem 'guard-rspec',           '2.3.3'
   gem 'guard-spork',           '1.4.0'

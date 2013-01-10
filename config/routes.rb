@@ -1,7 +1,14 @@
 Malone::Application.routes.draw do
+  get "logout" => "sessions#destroy", :as => "logout"
+  get "login" => "sessions#new", :as => "login"
+
   resources :email_templates
+  resources :sessions
+
   get  "/send_email/new/:id" => "send_email#prepare_to_send", :as =>:prepare_to_send
   post "/send_email" => "send_email#send_email", :as =>:send_emails
+
+  root :to => 'email_templates#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
