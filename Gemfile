@@ -35,5 +35,5 @@ group :test do
   gem 'faker',                 '1.1.2'
   gem 'simplecov',             '0.7.1', :require => false
   gem 'rb-fsevent',            '0.9.2'
-  gem 'rb-inotify',            '~> 0.8.8'
+#  gem 'rb-inotify',            '~> 0.8.8'
 end
