@@ -1,6 +1,6 @@
 <h1>Send Email</h1>
 
-<%= form_for(@send_email) do |f| %>
+<%= form_for(@send_email, html: { multipart: true }) do |f| %>
     <% if @send_email.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@send_email.errors.count, "error") %> prohibited this send_email from being submitted:</h2>
@@ -16,6 +16,10 @@
     <p>
       <%= f.label :filename %>
       <%= f.text_field :filename %>
+    </p>
+    <p>
+      <%= f.label :uploaded_file %>
+      <%= f.file_field :uploaded_file  %>
     </p>
 
     <div class="actions">

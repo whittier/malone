@@ -21,6 +21,11 @@ describe SendEmail do
     it "responds to email_template_id" do
       subject.respond_to?(:email_template_id).should be true
     end
+
+    it "responds to uploaded_file" do
+      subject.respond_to?(:uploaded_file).should be true
+
+    end
   end
 
   describe "validations" do

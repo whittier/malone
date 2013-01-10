@@ -14,6 +14,7 @@ class SendEmailController < ApplicationController
 
   def send_email
     send_email = SendEmail.new(params[:send_email])
+    puts send_email.data
 
     @email_template = EmailTemplate.find(send_email.email_template_id)
 
