@@ -1,0 +1,24 @@
+[hidden] { display: none; visibility: hidden; }
+
+@import "twitter/bootstrap/bootstrap";
+body { padding-top: 60px; }
+@import "twitter/bootstrap/responsive";
+
+// Set the correct sprite paths
+@iconSpritePath: asset-path('twitter/bootstrap/glyphicons-halflings.png');
+@iconWhiteSpritePath: asset-path('twitter/bootstrap/glyphicons-halflings-white.png');
+
+// Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
+@fontAwesomeEotPath: '/assets/fontawesome-webfont.eot';
+@fontAwesomeWoffPath: '/assets/fontawesome-webfont.woff';
+@fontAwesomeTtfPath: '/assets/fontawesome-webfont.ttf';
+@fontAwesomeSvgzPath: '/assets/fontawesome-webfont.svgz';
+@fontAwesomeSvgPath: '/assets/fontawesome-webfont.svg';
+
+// Font Awesome
+@import "fontawesome";
+
+footer { margin-top: 50px; margin-bottom: 50px; }
+
+.warning { color: #FF0000; }
+.warning p { font-size: 18px; fontweight: bold; line-height: 1.4; }
