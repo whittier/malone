@@ -7,14 +7,18 @@ class SessionsController < ApplicationController
   def create
     puts "IP"
     puts request.ip
+    host_name = Resolv.getname(request.ip)
+    puts "hostname "
+    puts host_name
     #puts "Params"
     #puts params
     # Playing with Comcast at this time
-    if not request.ip.to_s.starts_with? "76."
-      flash.now[:error] = "You can't get there from here"
-      render "new"
-      return
-    end
+
+    #if not request.ip.to_s.starts_with? "76."
+    #  flash.now[:error] = "You can't get there from here"
+    #  render "new"
+    #  return
+    #end
     person = Person.find_by_email(params[:session][:email])
     if person && person.authenticate(params[:session][:password])
       if params[:session][:remember_me] == "1"
