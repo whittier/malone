@@ -40,6 +40,7 @@ describe SendEmailController do
       send_email_params = {
         email_template_id: send_email.email_template_id,
         filename: send_email.filename
+
       }
       post :send_email,   {send_email: send_email_params}  , valid_session
 
