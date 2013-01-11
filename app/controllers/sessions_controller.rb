@@ -6,12 +6,15 @@ class SessionsController < ApplicationController
 
   def create
 
-    host_name = Resolv.getname(request.ip)
-    if (host_name.index("octanner") == nil) && (host_name.index("localhost") == nil)
-      flash.now[:error] = "You can't get there from here - wrong network! (#{host_name})"
-      render "new"
-      return
+    if request.ip != "0.0.0.0"
+      host_name = Resolv.getname(request.ip)
+      if (host_name.downcase.index("octanner.net") == nil) && (host_name.downcase.index("localhost") == nil)
+        flash.now[:error] = "You can't get there from your machine - wrong network! (#{host_name})"
+        render "new"
+        return
     end
+    end
+
 
     person = Person.find_by_email(params[:session][:email])
     if person && person.authenticate(params[:session][:password])
