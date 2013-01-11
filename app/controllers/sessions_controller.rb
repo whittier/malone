@@ -5,14 +5,11 @@ class SessionsController < ApplicationController
   end
 
   def create
-
-    if request.ip != "0.0.0.0"
-      host_name = Resolv.getname(request.ip)
-      if (host_name.downcase.index("octanner.net") == nil) && (host_name.downcase.index("localhost") == nil)
-        flash.now[:error] = "You can't get there from your machine - wrong network! (#{host_name})"
-        render "new"
-        return
-    end
+    host_name = Resolv.getname(request.ip)
+    if (host_name.downcase.index("octanner.net") == nil) && (host_name.downcase.index("localhost") == nil)
+      flash.now[:error] = "You can't get there from your machine - wrong network! (#{host_name})"
+      render "new"
+      return
     end
 
 
