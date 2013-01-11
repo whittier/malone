@@ -39,8 +39,8 @@ describe SendEmailController do
 
       send_email_params = {
         email_template_id: send_email.email_template_id,
-        filename: send_email.filename
-
+        filename: send_email.filename,
+        uploaded_file: Rack::Test::UploadedFile.new(Rails.root.join('spec', 'files', 'recipients.csv'), 'text/csv')
       }
       post :send_email,   {send_email: send_email_params}  , valid_session
 

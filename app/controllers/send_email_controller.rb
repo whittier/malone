@@ -13,6 +13,7 @@ class SendEmailController < ApplicationController
   end
 
   def send_email
+    puts '&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&', params[:send_email], '&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&'
     send_email = SendEmail.new(params[:send_email])
 
     @email_template = EmailTemplate.find(send_email.email_template_id)

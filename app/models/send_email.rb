@@ -5,7 +5,7 @@ class SendEmail
   include ActiveModel::Conversion
   extend ActiveModel::Naming
 
-  attr_accessor :filename, :email_template_id, :uploaded_file, :data, :content_type
+  attr_accessor :filename, :email_template_id, :uploaded_file, :data, :content_type, :count
 
   validates_length_of :filename, :maximum => 500, :minimum => 1
 
@@ -34,8 +34,7 @@ class SendEmail
         header = row
       else
         data = Hash[header.zip row]
-        puts '\n\n\n****\n\n\n', data, '\n\n\n****\n\n\n'
-        send_one_email(email_template, data)
+        send_one_email(email_template, data) unless row.empty?
       end
     end
     @count

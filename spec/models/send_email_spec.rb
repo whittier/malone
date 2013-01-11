@@ -61,16 +61,11 @@ describe SendEmail do
     it "#uploaded_file=" do
       send_email = SendEmail.new(valid_parameters)
 
-      self.filename = incoming_file.original_filename
-      self.content_type = incoming_file.content_type
-      self.data = incoming_file.read
-      File.stub(:open)
-      File.any_instance.stub(:original_filename).and_return "original filename"
-      File.any_instance.stub(:content_type).and_return "text/html"
-      File.any_instance.stub(:read).and_return "true"
-      test_file = File.open()
+      uploaded_file = mock(ActionDispatch::Http::UploadedFile).as_null_object
+      uploaded_file.stub!(:original_filename).and_return('test.doc')
+      uploaded_file.stub!(:read).and_return("Some content")
 
-      send_email.uploaded_file=test_file
+      send_email.uploaded_file=uploaded_file
 
       send_email.content_type.should_not be nil
     end
