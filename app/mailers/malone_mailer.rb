@@ -9,11 +9,9 @@ class MaloneMailer < ActionMailer::Base
   #  end
   #end
 
-  def welcome_email(email_template, data)
+  def welcome_email(email)
     admin_address = Rails.configuration.oc_malone_admin_address || ""
-    admin_address
-    mail(to: [admin_address,  data[:to]],
-         subject: email_template.subject,
-         body:  email_template.body)
+    email[:to] = [admin_address, email[:to].to_s]
+    mail(email)
   end
 end

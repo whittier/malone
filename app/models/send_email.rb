@@ -13,6 +13,7 @@ class SendEmail
     attributes.each do |name, value|
       send("#{name}=", value)
     end
+    @count = 0
   end
 
   def persisted?
@@ -26,26 +27,39 @@ class SendEmail
   end
 
   def send_all_emails()
-    CSV.parse(data, headers: true).each do |row|
-      data = create_data_hash(row)
-      email_template = EmailTemplate.find(email_template_id)
-      send_one_email
+    email_template = EmailTemplate.find(self.email_template_id)
+    header = nil
+    CSV.parse(data).each do |row|
+      if (!header)
+        header = row
+      else
+        data = Hash[header.zip row]
+        puts '\n\n\n****\n\n\n', data, '\n\n\n****\n\n\n'
+        send_one_email(email_template, data)
+      end
+    end
+    @count
+  end
+
+  def send_one_email(email_template, data)
+    e_mail = {
+        to: data['to'],
+        subject: do_substitution(email_template.subject, data),
+        body: do_substitution(email_template.body, data)
+    }
+
+    if (MaloneMailer.welcome_email(e_mail).deliver)
+      @count = @count + 1
     end
   end
 
-  def create_data_hash(row)
-    {
-        to: row[0],
-        first_name: row[1],
-        last_name: row[2],
-        url: row[3],
-        password: password
-
-    }
-  end
-
-  def send_one_email()
-    MaloneMailer.create_welcome_email()
+  def do_substitution(str, data_hash)
+    puts "do_substitution ", str, data_hash
+    str = str.clone
+    data_hash.each do |k, v|
+      str.gsub!('{{' + k.to_s + '}}', v)
+    end
+    str
   end
 
 end
