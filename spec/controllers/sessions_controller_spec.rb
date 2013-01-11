@@ -2,6 +2,15 @@ require 'spec_helper'
 
 describe SessionsController do
 
+  it "rejects unknown IP addresses" do
+    FactoryGirl.create(:person, password: "password", password_confirmation: "password")
+    request.remote_addr = "192.168.1.100"
+    request.env["X-Forwarded-For"] = "192.168.1.100"
+    post :create, session: { email: Person.last.email, password: "", remember_me: "0" }
+    response.headers["Set-Cookie"].should eq nil
+    flash[:error].should =~ /You can't get there from your machine - wrong network!/i
+  end
+
   it "logs in permanently" do
     FactoryGirl.create(:person, password: "password", password_confirmation: "password")
     post :create, session: { email: Person.last.email, password: "password", remember_me: "1" }
