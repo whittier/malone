@@ -20,6 +20,13 @@ require 'spec_helper'
 
 describe EmailTemplatesController do
 
+  let(:person) { FactoryGirl.create(:person, password: "password", password_confirmation: "password") }
+
+  before(:each) do
+    controller.should_receive(:require_person)
+  end
+
+
   # This should return the minimal set of attributes required to create a valid
   # EmailTemplate. As you add validations to EmailTemplate, be sure to
   # update the return value of this method accordingly.

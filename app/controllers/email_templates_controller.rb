@@ -4,7 +4,7 @@ class EmailTemplatesController < ApplicationController
   # GET /email_templates.json
   def index
     @email_templates = EmailTemplate.all
-
+    puts session
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @email_templates }
