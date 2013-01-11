@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 
     host_name = Resolv.getname(request.ip)
     if (host_name.index("octanner") == nil) && (host_name.index("localhost") == nil)
-      flash.now[:error] = "You can't get there from here - wrong network! (#{host_name})"
+      flash.now[:error] = "You can't get there from your machine - wrong network! (#{host_name})"
       render "new"
       return
     end
