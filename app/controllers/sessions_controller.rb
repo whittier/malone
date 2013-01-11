@@ -5,6 +5,8 @@ class SessionsController < ApplicationController
   end
 
   def create
+    puts "IP"
+    puts request.ip
     #puts "Params"
     #puts params
     person = Person.find_by_email(params[:session][:email])
