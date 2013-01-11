@@ -2,6 +2,10 @@ require 'spec_helper'
 
 describe SendEmailController do
 
+  before(:each) do
+    controller.should_receive(:require_person)
+  end
+
   def valid_email_template_attributes
     {
         name: "name",
