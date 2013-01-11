@@ -5,6 +5,8 @@ class SessionsController < ApplicationController
   end
 
   def create
+    puts "Here"
+    puts params
     person = Person.find_by_email(params[:session][:email])
     if person && person.authenticate(params[:session][:password])
       if params[:session][:remember_me] == "1"
