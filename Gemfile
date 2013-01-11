@@ -14,6 +14,7 @@ gem 'awesome_print',           '1.1.0'
 gem 'dalli',                   '2.6.0'
 gem 'newrelic_rpm',            '3.5.4.34'
 gem 'psych'
+gem 'uglifier'
 
 group :assets do
   gem 'sass-rails',            '3.2.5'
