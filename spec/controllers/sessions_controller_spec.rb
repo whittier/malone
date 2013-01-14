@@ -2,6 +2,10 @@ require 'spec_helper'
 
 describe SessionsController do
 
+  before(:each) do
+    Resolv.stub(:getname).and_return "octanner.net"
+  end
+
   it "logs in permanently" do
     FactoryGirl.create(:person, password: "password", password_confirmation: "password")
     post :create, session: { email: Person.last.email, password: "password", remember_me: "1" }

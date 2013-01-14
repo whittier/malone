@@ -13,13 +13,13 @@ class SendEmailController < ApplicationController
   end
 
   def send_email
+    puts '&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&', params[:send_email], '&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&'
     send_email = SendEmail.new(params[:send_email])
 
     @email_template = EmailTemplate.find(send_email.email_template_id)
 
-    MaloneMailer.welcome_email(@email_template, { to: ''}).deliver
+    @email_count = send_email.send_all_emails()
 
-    @email_count = 1
     respond_to do |format|
       format.html # prepare_to_send.html.erb
       format.json { render json: @email_template }

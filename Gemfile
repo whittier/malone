@@ -15,6 +15,7 @@ gem 'dalli',                   '2.6.0'
 gem 'newrelic_rpm',            '3.5.4.34'
 gem 'psych'
 gem 'uglifier'
+#gem 'rack-ip-whitelist'
 
 group :assets do
   gem 'sass-rails',            '3.2.5'
@@ -36,5 +37,5 @@ group :test do
   gem 'faker',                 '1.1.2'
   gem 'simplecov',             '0.7.1', :require => false
   gem 'rb-fsevent',            '0.9.2'
-#  gem 'rb-inotify',            '~> 0.8.8'
 end
+
