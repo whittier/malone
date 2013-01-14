@@ -30,6 +30,7 @@ group :development, :test do
   gem 'factory_girl_rails',    '4.1.0'
   gem 'guard-rspec',           '2.3.3'
   gem 'guard-spork',           '1.4.0'
+  gem 'rb-readline'   #Allows Guard to watch in real-time with Spork
 end
 
 group :test do
